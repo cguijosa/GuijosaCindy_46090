@@ -1,8 +1,8 @@
 /* 
  * File:   main.cpp
  * Author: Cindy Guijosa
- * Purpose: Homework
- * Created on June 26, 2015, 5:32 PM
+ * Putpose: Homework
+ * Created on June 26, 2015, 5:43 PM
  */
 
 //System Libraries
@@ -18,7 +18,6 @@ int main(int argc, char** argv) {
     int numPods,peaPPod, totPeas;
     
     //Output and inputs
-    cout<<"Hello\n";
     cout<<"Press return after entering a number.\n";
     cout<<"Enter the number of pods:\n";
     
@@ -26,7 +25,7 @@ int main(int argc, char** argv) {
     
     cout<<"Enter the number of peas in a pod:\n";
     cin>>peaPPod;//The user inputs the amount of peas per pod
-    totPeas=numPods/peaPPod;//Total amount of peas. Division to show error message will show
+    totPeas=numPods+peaPPod;//Total amount of peas. addition to show logic error
     cout<<"If you have ";
     cout<<numPods;
     cout<<" pea pods\n";
@@ -36,7 +35,6 @@ int main(int argc, char** argv) {
     cout<<"you have ";
     cout<<totPeas;
     cout<<" peas in all the pods.\n";
-    cout<<"Good-bye\n";       
+           
     return 0;
 }
-
