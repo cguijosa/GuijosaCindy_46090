@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=Cygwin_4.x-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Debug=programproject
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/programproject
-CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Debug=programproject.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x-Windows/package/programproject.tar
+CND_PLATFORM_Debug=Cygwin_4.x_2-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x_2-Windows
+CND_ARTIFACT_NAME_Debug=savitch_chp1_progproj_prob4
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x_2-Windows/savitch_chp1_progproj_prob4
+CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x_2-Windows/package
+CND_PACKAGE_NAME_Debug=savitchchp1progprojprob4.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x_2-Windows/package/savitchchp1progprojprob4.tar
 # Release configuration
-CND_PLATFORM_Release=Cygwin_4.x-Windows
-CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_4.x-Windows
-CND_ARTIFACT_NAME_Release=programproject
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x-Windows/programproject
-CND_PACKAGE_DIR_Release=dist/Release/Cygwin_4.x-Windows/package
-CND_PACKAGE_NAME_Release=programproject.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x-Windows/package/programproject.tar
+CND_PLATFORM_Release=Cygwin_4.x_2-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_4.x_2-Windows
+CND_ARTIFACT_NAME_Release=savitch_chp1_progproj_prob4
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x_2-Windows/savitch_chp1_progproj_prob4
+CND_PACKAGE_DIR_Release=dist/Release/Cygwin_4.x_2-Windows/package
+CND_PACKAGE_NAME_Release=savitchchp1progprojprob4.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x_2-Windows/package/savitchchp1progprojprob4.tar
 #
 # include compiler specific variables
 #
