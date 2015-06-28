@@ -15,7 +15,7 @@ using namespace std;
 int main(int argc, char** argv) {
    
     //Declare variables 
-    short rectWid, rectHei, fenLeng;
+    unsigned int rectWid, rectHei, fenLeng;
     
     //Outputs and inputs
     cout<<"What is the rectangles width in feet?\n";
