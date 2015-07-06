@@ -16,15 +16,18 @@ int main(int argc, char** argv) {
     //Declare variables
     unsigned short num1,       //The number of cookies ate 
                    stdcal=300;     //The standard 
-    float          calories;   //The calories consumed by person
+    float          calorie;   //The calories consumed by person
     
     //Prompt and input
     cout<<"Please enter the number of cookies you consumed "<<endl;
     cin>>num1;
-    calories=(stdcal*num1)3.0f;
+    
+    //Calculations
+    calorie=(stdcal*num1)3.0f;
+    
+    //Output
     cout<<"The number of calories you consumed is = "<<calories<<endl;
   
-    //Exit Stage Right!
     return 0;
 }
 

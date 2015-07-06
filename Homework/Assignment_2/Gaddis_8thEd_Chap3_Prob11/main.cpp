@@ -26,8 +26,12 @@ int main(int argc, char** argv) {
     cout<<setprecision(2)<<fixed;
     cout<<"Please enter the amount of U.S dollars You wish to convert \n";
     cin>>dollar;
+    
+    //Calculations
     yen=(122.41*dollar);
     euro=(.91*dollar);
+    
+    //Output
     cout<<"The conversion from U.S dollars to Japanese yen you entered is =\n";
         <<yen<<endl;
     cout<<"The conversion from U.S dollars to European euros you entered is =\n";
