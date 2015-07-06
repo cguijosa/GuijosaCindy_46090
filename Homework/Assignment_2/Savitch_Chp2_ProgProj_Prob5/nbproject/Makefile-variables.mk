@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin_4.x_2-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin_4.x_2-Windows
-CND_ARTIFACT_NAME_Debug=gadis_chp3_prob17
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x_2-Windows/gadis_chp3_prob17
+CND_ARTIFACT_NAME_Debug=savitch_chp2_progproj_prob5
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin_4.x_2-Windows/savitch_chp2_progproj_prob5
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin_4.x_2-Windows/package
-CND_PACKAGE_NAME_Debug=gadischp3prob17.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x_2-Windows/package/gadischp3prob17.tar
+CND_PACKAGE_NAME_Debug=savitchchp2progprojprob5.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin_4.x_2-Windows/package/savitchchp2progprojprob5.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin_4.x_2-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin_4.x_2-Windows
-CND_ARTIFACT_NAME_Release=gadis_chp3_prob17
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x_2-Windows/gadis_chp3_prob17
+CND_ARTIFACT_NAME_Release=savitch_chp2_progproj_prob5
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin_4.x_2-Windows/savitch_chp2_progproj_prob5
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin_4.x_2-Windows/package
-CND_PACKAGE_NAME_Release=gadischp3prob17.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x_2-Windows/package/gadischp3prob17.tar
+CND_PACKAGE_NAME_Release=savitchchp2progprojprob5.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin_4.x_2-Windows/package/savitchchp2progprojprob5.tar
 #
 # include compiler specific variables
 #
