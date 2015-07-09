@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=RetirementCalculator_V2
+PROJECTNAME=RetirementCalculator_V2 copy
 
 # Active Configuration
 DEFAULTCONF=Debug
