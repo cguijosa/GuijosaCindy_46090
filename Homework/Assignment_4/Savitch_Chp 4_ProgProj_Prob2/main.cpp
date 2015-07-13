@@ -59,7 +59,9 @@ int main(int argc, char** argv) {
  *         hatSiz->The hat size of the user
  * **************************************************************/
 void hat(float &weight,float &height){
+    //Calculations
     float hatSiz=(weight/height)*2.9f;//To calculate hat size
+    //Output
     cout<<setprecision(2)<<fixed;
     cout<<"Your hat size is "<<hatSiz<<endl;
 }

@@ -40,15 +40,36 @@ unsigned short prompt(unsigned short &feet, unsigned short &in){
     return(feet, in);
 }
 
+/*****************************************************************
+ * *************************calc***********************************
+ * ***************************************************************
+ * Purpose: To convert feet and inches to meters and centimeters
+ * Input:   
+ *         in->to convert to feet
+ *         feet->to convert to meters
+ * Output:
+ *         metersB->The whole number of meters
+ *         cm->centimeters to output
+ * **************************************************************/
+
 float calc(unsigned short &feet, unsigned short &in, float &meters, 
     float &cm, int &metersB){
-    float totfeet=feet+(in/12.0f);
-    meters=totfeet*0.3048f;
-    metersB=(int)meters;
+    float totfeet=feet+(in/12.0f);//converting everything to feet
+    meters=totfeet*0.3048f;//converting feet to meters
+    metersB=(int)meters;//Taking off decimals
     float totmet=totfeet*0.3048f;
-    cm=(totmet-metersB)*100;   
+    cm=(totmet-metersB)*100;//Taking decimals of meters and converting that to cm   
     return(metersB, cm);
 }
+
+/*****************************************************************
+ * *************************output********************************
+ * ***************************************************************
+ * Purpose: To output results
+ * Input:   
+ *         meters->conversion to meters
+ *         cm->conversion to cm
+ * **************************************************************/
 
 void output(int &metersB, float &cm){
     cout<<setprecision(2)<<fixed;
