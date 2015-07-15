@@ -47,6 +47,7 @@ void input(unsigned short &hh,unsigned short &mm){
     cout<<"What is the time in 24 hour notation? (ex: 14:20)\n";
     cin>>hh;
     cin.ignore();//To ignore the colons in time the user inputs
+    cin>>mm;
 }
     
 /*****************************************************************
