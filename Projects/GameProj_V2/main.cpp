@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <ctime>//for random number generator
 #include <fstream>
+#include <string>
 using namespace std;
 
 //User Libraries
@@ -47,8 +48,19 @@ int main(int argc, char** argv) {
     randomC(grid);
     randomR(grid);                             
     copy(grid,displayG);
-    hidSpot(displayG);
     
+    //to output rules from a file
+    ifstream infile("rules.txt");
+    string rules;
+    while(!infile.eof()){
+        infile>>rules;
+        cout<<rules<<" ";
+    }
+    cout<<endl;
+    
+    cout<<"The object is to fill all empty spots so that the numbers 1 to 9 appear exactly once in each row,\n"; 
+    cout<<"column and 3x3 box (ex:starting at row 1 column 1 and ending at row 3 column 3)."<<endl<<endl;
+    hidSpot(displayG);
     //Loop to repeat until there are no more dashes on grid 
     do
     {
@@ -172,6 +184,7 @@ void print(unsigned short grid[][SIZ]){
  * *************************input*********************************
  * ***************************************************************
  * Purpose: To prompt/input and take input if right modify display
+ *          and choose level
  * Input:   
  *         a->row user input
  *         b->column user input
@@ -255,17 +268,55 @@ void print(char displayG[][SIZ], unsigned short grid[][SIZ]){
  * **************************************************************/
 
 void hidSpot(char displayG[][SIZ]){
-    for(int i=0;i<(SIZ*SIZ)-17;i++){
-        while(true){ 
-            char x=rand()%SIZ; //8
-            char y=rand()%SIZ; //8
-            if(displayG[x][y]!='-')
-            {
-             displayG[x][y]='-';
-             break;
-            }          
-            cout<<displayG[x][y]<<" ";
-        }
-    }  
-    cout<<endl;
+    char level;
+    cout<<"Choose level of difficulty: a for easy, b for medium, and c for hard.\n";
+    cin>>level;
+    switch(level){
+            case 'a':
+                for(int i=0;i<(SIZ*SIZ)-21;i++){
+                    while(true){ 
+                        char x=rand()%SIZ; //8
+                        char y=rand()%SIZ; //8
+                        if(displayG[x][y]!='-')
+                        {
+                         displayG[x][y]='-';
+                         break;
+                        }          
+                        cout<<displayG[x][y]<<" ";
+                    }
+                }  
+                cout<<endl;
+                break;
+            case'b': 
+                for(int i=0;i<(SIZ*SIZ)-19;i++){
+                    while(true){ 
+                        char x=rand()%SIZ; //8
+                        char y=rand()%SIZ; //8
+                        if(displayG[x][y]!='-')
+                        {
+                         displayG[x][y]='-';
+                         break;
+                        }          
+                        cout<<displayG[x][y]<<" ";
+                    }
+                }  
+                cout<<endl;
+                break;
+            case 'c':
+               for(int i=0;i<(SIZ*SIZ)-17;i++){
+                    while(true){ 
+                        char x=rand()%SIZ; //8
+                        char y=rand()%SIZ; //8
+                        if(displayG[x][y]!='-')
+                        {
+                         displayG[x][y]='-';
+                         break;
+                        }          
+                        cout<<displayG[x][y]<<" ";
+                    }
+                }  
+                cout<<endl;
+                break;
+    }       
+                
 }
