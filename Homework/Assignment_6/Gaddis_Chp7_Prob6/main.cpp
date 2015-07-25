@@ -1,0 +1,67 @@
+/* 
+ * File:   main.cpp
+ * Author: Cindy Guijosa
+ * Purpose: Homework
+ * Created on July 24, 2015, 9:05 PM
+ */
+
+//System Libraries
+#include <iostream>
+using namespace std;
+
+//User Libraries
+
+//Global Constants
+
+//Function Prototypes
+
+//Execution Begins Here!
+int main(int argc, char** argv) {
+    //initialize the array
+    const int STUDENT=5,  //number of students
+              GRADES=5,   //number of letter grades
+              SCORES=4;   //number of test scores
+    string names[STUDENT];//array of student names
+    char letGrad[GRADES]={'F','D','C','B','A'}; //array of letter grades
+    float stuScre[STUDENT][SCORES];
+    float sumStu[STUDENT];
+    
+    //declare variables
+    float avg;  //average of each test score per student
+    
+    //write student names and scores
+    for(int i=0;i<STUDENT;i++){
+        int sum=0;
+        cout<<"Enter name of student "<<i+1<<": ";
+        cin>>names[i];
+        for(int j=0;j<SCORES;j++){
+            do{
+            cout<<names[i]<<": Score "<<j+1<<": ";
+            cin>>stuScre[i][j];
+            if(stuScre[i][j]==0){
+                    cout<<"You got a zero?!?!?! Get a life!"<<endl;
+                }
+            if(stuScre[i][j]<0 || stuScre[i][j]>100){
+                cout<<"A test score cannot be less than 0 or greater than 100"<<endl<<endl;
+            }
+            }while(stuScre[i][j]<0 || stuScre[i][j]>100);
+            sum+=stuScre[i][j];
+        }
+        sumStu[i]=sum;
+    }
+    cout<<endl;
+    
+    //output letter grade
+    for(int i=0;i<STUDENT;i++){
+        avg=sumStu[i]/4;
+        cout<<names[i]<<"'s Grade: ";
+        if(avg>=90) cout<<"Average: "<<avg<<"% "<<letGrad[4]<<endl;
+        else if(avg>=80) cout<<"Average: "<<avg<<"% "<<letGrad[3]<<endl;
+        else if(avg>=70) cout<<"Average: "<<avg<<"% "<<letGrad[2]<<endl;
+        else if(avg>=60) cout<<"Average: "<<avg<<"% "<<letGrad[1]<<endl;
+        else cout<<"Average: "<<avg<<"% "<<letGrad[0]<<endl;
+    }
+    cout<<endl;
+    return 0;
+}
+

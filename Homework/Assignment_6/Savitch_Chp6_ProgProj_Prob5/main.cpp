@@ -16,8 +16,7 @@ using namespace std;
 //Global Constants
 
 //Function Prototypes
-void correct(ifstream &, ofstream &);
-void other(ifstream &, ofstream &);
+
 //Execution Begins Here!
 int main(int argc, char** argv) {
     //Declare Variables
