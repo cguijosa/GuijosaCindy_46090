@@ -8,24 +8,31 @@
 //System Libraries
 #include <iostream>
 #include <cstdlib>
-#include <ctime>//for random number generator
+#include <ctime>//for random number generator;
 #include <fstream>
 #include <string>
+#include <iomanip>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 //User Libraries
-
+#include "coordinate.h"
 //Global Constants
 const unsigned short SIZ=9;
+unsigned short SIZE=3;
 //Function Prototypes
 void randomC(unsigned short [][SIZ]);
 void randomR(unsigned short [][SIZ]);
 void print(unsigned short [][SIZ]);
-void input(char &,char &,char &,unsigned short [][SIZ], char [][SIZ]);
+void input(place &,unsigned short [][SIZ], char [][SIZ]);
 void copy(unsigned short [][SIZ], char [][SIZ]);
 void print(char [][SIZ],unsigned short [][SIZ]);
+void dspLev(string [], unsigned short *);
 void hidSpot(char [][SIZ]);
 unsigned short cntDash(char [][SIZ]);
+void pntVect(vector<unsigned short> &, place &);
+int search(vector<unsigned short> &, place &);
 //Execution Begins Here!
 int main(int argc, char** argv) {
     //Plant random number seed
@@ -41,9 +48,25 @@ int main(int argc, char** argv) {
                                     {8,9,1,5,6,7,2,3,4}, 
                                     {2,3,4,8,9,1,5,6,7},
                                     {5,6,7,2,3,4,8,9,1}}; 
-    
+   
     char displayG[SIZ][SIZ];
-    char a,b,num;
+    //vector<unsigned short> score;
+  
+    string lev[SIZE]={"a","b","c"};
+    unsigned short levDisp[SIZE]={21,17,19};
+    unsigned short *p=levDisp;
+    place area;
+    vector<unsigned short> score;
+    score.push_back(98);
+    score.push_back(99);
+    score.push_back(100);
+    
+    /*enum scor{topOne,topTwo,topThre};
+    cout<<scor(topOne+1)<<endl;
+    cout<<scor(topTwo+1)<<endl;
+    cout<<scor(topThre+1)<<endl;*/
+    
+    //char a,b,num;
     bool again;
     do{    
         randomC(grid);
@@ -66,22 +89,36 @@ int main(int argc, char** argv) {
             cout<<rules<<" ";
         }
         cout<<endl;
-
         cout<<"The object is to fill all empty spots so that the numbers 1 to 9 appear exactly once in each row,\n"; 
         cout<<"column and 3x3 box (ex:starting at row 1 column 1 and ending at row 3 column 3)."<<endl<<endl;
+        dspLev(lev,p);
         hidSpot(displayG);
         //Loop to repeat until there are no more dashes on grid 
 
         do
         {
             print(displayG,grid);
-            input(a,b,num,grid,displayG);
+            input(area,grid,displayG);
 
         }while(cntDash(displayG)>0);
         
         char redo;
         cout<<endl;
-        cout<<"Congratulations, would you like to play again?(y for yes or n for no)"<<endl;
+        cout<<"Congratulations!"<<endl;
+        cout<<"It took you "<<area.count<<" turns to complete the game"<<endl;
+        
+       
+        pntVect(score,area);
+        int found;
+        found=search(score,area);
+        if (found>-1){
+            cout<<"You scored in the top "<<found<<endl;
+        }else{
+            cout<<"You did not get a top score. "<<endl;
+        }
+        
+        area.count=0;
+        cout<<"Would you like to play again?(y for yes or n for no)"<<endl;
         cin>>redo;
         if(redo=='y' || redo=='Y'){
             again=true;
@@ -91,6 +128,9 @@ int main(int argc, char** argv) {
             cout<<endl;
         }
     }while(again==true);
+    
+    cout<<endl;
+    
     
     return 0;
 }
@@ -216,18 +256,20 @@ void print(unsigned short grid[][SIZ]){
  *         displayG->modify value if answer is correct
  * **************************************************************/
 
-void input(char &a,char &b,char &num,unsigned short grid[][SIZ],char displayG[][SIZ]){
+void input(place &area,unsigned short grid[][SIZ],char displayG[][SIZ]){
     cout<<"To select a coordinate enter number of row, number of column,"<<endl;
     cout<<"and number you want to enter.(ex: 1(row),4(column),9)"<<endl;
-    cin>>a;
+    cin>>area.a;
     cin.ignore();
-    cin>>b;
+    cin>>area.b;
     cin.ignore();
-    cin>>num;
+    cin>>area.num;
     
-    int x=a-49;
-    int y=b-49;
-    int c=num-48;
+    area.count++;
+    
+    int x=area.a-49;
+    int y=area.b-49;
+    int c=area.num-48;
     if(c==grid[x][y]){
         displayG[x][y]='a';
     }else{
@@ -297,7 +339,7 @@ void hidSpot(char displayG[][SIZ]){
     cin>>level;
     switch(level){
             case 'a':
-                for(int i=0;i<(SIZ*SIZ)-21;i++){
+                for(int i=0;i<(SIZ*SIZ)-80;i++){
                     while(true){ 
                         char x=rand()%SIZ; //8
                         char y=rand()%SIZ; //8
@@ -366,4 +408,38 @@ unsigned short cntDash(char displayG [][SIZ]){
         }
     }
     return cnt;
+}
+
+void dspLev(string lev[], unsigned short *p){
+    cout<<"level       |";
+    for(int i=0;i<SIZE;i++){
+        cout<<setw(4)<<lev[i];
+    }
+    cout<<endl;
+    cout<<"            --------------"<<endl;
+    cout<<"# of given  |";
+    for(int i=0;i<SIZE;i++){
+        cout<<setw(4)<<p[i];
+    }
+    cout<<endl<<endl;
+}
+
+void pntVect(vector<unsigned short> &score, place &area){
+    
+    score.push_back(area.count);
+    sort(score.begin(),score.end());
+    score.erase(score.begin()+3);
+    cout<<"Top Scores"<<endl;
+    for(int i=0;i<score.size();i++){
+        cout<<i+1<<"."<<setw(5)<<score[i]<<endl;
+    }
+}
+
+int search(vector<unsigned short> &score, place &area){
+    for(int i=0;i<=score.size();++i){
+        if(score[i]==area.count){
+            return i+1;
+        }  
+    }
+    return -1;
 }
