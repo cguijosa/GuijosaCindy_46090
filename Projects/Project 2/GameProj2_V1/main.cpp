@@ -20,15 +20,15 @@ using namespace std;
 #include "coordinate.h"
 //Global Constants
 const unsigned short SIZ=9;
-unsigned short SIZE=3;
+
 //Function Prototypes
 void randomC(unsigned short [][SIZ]);
 void randomR(unsigned short [][SIZ]);
 void print(unsigned short [][SIZ]);
 void input(place &,unsigned short [][SIZ], char [][SIZ]);
 void copy(unsigned short [][SIZ], char [][SIZ]);
-void print(char [][SIZ],unsigned short [][SIZ]);
-void dspLev(string [], unsigned short *);
+void print(char [][SIZ],unsigned short [][SIZ],unsigned short []);
+void dspLev(unsigned short, string [], unsigned short *);
 void hidSpot(char [][SIZ]);
 unsigned short cntDash(char [][SIZ]);
 void pntVect(vector<unsigned short> &, place &);
@@ -48,12 +48,12 @@ int main(int argc, char** argv) {
                                     {8,9,1,5,6,7,2,3,4}, 
                                     {2,3,4,8,9,1,5,6,7},
                                     {5,6,7,2,3,4,8,9,1}}; 
-   
+    
     char displayG[SIZ][SIZ];
-    //vector<unsigned short> score;
-  
+    unsigned short numb[SIZ];
+    const unsigned short SIZE=3;
     string lev[SIZE]={"a","b","c"};
-    unsigned short levDisp[SIZE]={21,17,19};
+    unsigned short levDisp[SIZE]={25,23,21};
     unsigned short *p=levDisp;
     place area;
     vector<unsigned short> score;
@@ -80,24 +80,27 @@ int main(int argc, char** argv) {
         cout<<endl;
         cout<<"Hello "<<line<<endl;
         
+        ofstream output;
+        output.open("name.txt");
+        output<<line;
+        output.close();
         
         //to output rules from a file
         ifstream infile("rules.txt");
         string rules;
-        while(!infile.eof()){
-            infile>>rules;
-            cout<<rules<<" ";
+        if(infile.is_open()){
+            while(getline(infile,rules)){
+                cout<<rules<<"\n";
+            }
         }
         cout<<endl;
-        cout<<"The object is to fill all empty spots so that the numbers 1 to 9 appear exactly once in each row,\n"; 
-        cout<<"column and 3x3 box (ex:starting at row 1 column 1 and ending at row 3 column 3)."<<endl<<endl;
-        dspLev(lev,p);
+        dspLev(SIZE,lev,p);
         hidSpot(displayG);
         //Loop to repeat until there are no more dashes on grid 
 
         do
         {
-            print(displayG,grid);
+            print(displayG,grid,numb);
             input(area,grid,displayG);
 
         }while(cntDash(displayG)>0);
@@ -306,8 +309,14 @@ void copy(unsigned short grid[][SIZ], char displayG[][SIZ]){
  *         displayG->print dashes where numbers are not displayed
  * **************************************************************/
 
-void print(char displayG[][SIZ], unsigned short grid[][SIZ]){
-    cout<<"    1 2 3 4 5 6 7 8 9"<<endl;
+void print(char displayG[][SIZ], unsigned short grid[][SIZ], unsigned short numb[]){
+    cout<<"    ";
+    for(int i=0;i<=SIZ-1;i++){
+        numb[i]=i+1;
+        cout<<numb[i]<<" ";
+    }   
+    cout<<endl;
+    
     cout<<"   =================="<<endl;
     for(int i=0;i<SIZ;i++){
         cout<<i+1<<"|  ";
@@ -339,7 +348,7 @@ void hidSpot(char displayG[][SIZ]){
     cin>>level;
     switch(level){
             case 'a':
-                for(int i=0;i<(SIZ*SIZ)-80;i++){
+                for(int i=0;i<(SIZ*SIZ)-25;i++){
                     while(true){ 
                         char x=rand()%SIZ; //8
                         char y=rand()%SIZ; //8
@@ -354,7 +363,7 @@ void hidSpot(char displayG[][SIZ]){
                 cout<<endl;
                 break;
             case'b': 
-                for(int i=0;i<(SIZ*SIZ)-19;i++){
+                for(int i=0;i<(SIZ*SIZ)-23;i++){
                     while(true){ 
                         char x=rand()%SIZ; //8
                         char y=rand()%SIZ; //8
@@ -369,7 +378,7 @@ void hidSpot(char displayG[][SIZ]){
                 cout<<endl;
                 break;
             case 'c':
-               for(int i=0;i<(SIZ*SIZ)-17;i++){
+               for(int i=0;i<(SIZ*SIZ)-21;i++){
                     while(true){ 
                         char x=rand()%SIZ; //8
                         char y=rand()%SIZ; //8
@@ -410,7 +419,7 @@ unsigned short cntDash(char displayG [][SIZ]){
     return cnt;
 }
 
-void dspLev(string lev[], unsigned short *p){
+void dspLev(unsigned short SIZE,string lev[], unsigned short *p){
     cout<<"level       |";
     for(int i=0;i<SIZE;i++){
         cout<<setw(4)<<lev[i];
